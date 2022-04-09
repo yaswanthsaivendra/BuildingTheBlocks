@@ -31,7 +31,7 @@ contract MyContract {
 
     // Local Variables
 
-    function getValue() public pure returns(uint) {
+    function getValue() public pure returns(uint) { // pure - does mean that no state will be modified and not to read.
         uint value=1;
         return value;
     }

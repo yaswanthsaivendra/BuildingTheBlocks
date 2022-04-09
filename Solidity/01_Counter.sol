@@ -13,7 +13,7 @@ contract Counter {
     //public - does mean that it can be accessible from outside of this smart contract.
 
     //function to read the count
-    function getCount() public view returns(uint) {
+    function getCount() public view returns(uint) { // view - does mean that not to modify the state but can read the state of variables and all.
         return count;
     }
 
