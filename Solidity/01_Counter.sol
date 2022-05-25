@@ -25,7 +25,7 @@ contract Counter {
 }
         /* The same contract can be written in short as*/
 
-contract Counter {
+contract CounterNew {
     //unsigned integer
     uint public count=0;    //using public will automatically create a function with name "count" to view the value of count.
 

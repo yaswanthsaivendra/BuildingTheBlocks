@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+// pragma - command means additional information will be taken care by compiler.
+pragma solidity ^0.6.0; // ^ does mean that use this version or a higher one.
+
+// solidity is a statically typed language (i.e, data types should be defined explicitly).
 
     /* Variables */
 contract MyContract {
@@ -7,7 +10,7 @@ contract MyContract {
 
     //Integers
     int public myInt = 1;
-    uint public myUint = 1;
+    uint public myUint = 1; //uint is an alias for uint256
     uint256 public myUint256 = 1;
     uint8 public myUint8 = 1;
 
@@ -35,4 +38,17 @@ contract MyContract {
         uint value=1;
         return value;
     }
+
+    // math operations
+    /*
+
+    +   addition
+    -   subtraction
+    *   Multiplication
+    /   division
+    %   modulo
+    **  power
+
+    */
+
 }
