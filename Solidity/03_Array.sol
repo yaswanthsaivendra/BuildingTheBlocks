@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+pragma solidity <0.6.0;
 
 contract Array {
     //Arrays
@@ -34,4 +34,8 @@ contract Array {
     //In solidity, functions can be public(we can call this function from other contracts) or private(we can only call these functions from the same contract in which it exists).
     //To avoid security risks, we should prefer creating functions as private.
     //names of private functions start with a underscore as a convention.
+
+    // Data locations
+    // memory - we will use this keyword when we need a temporary copy.
+    // storage - we will use this keyword when we need to refer to original one(its just like pointer).
 }
