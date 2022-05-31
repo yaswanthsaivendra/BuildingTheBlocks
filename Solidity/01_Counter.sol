@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0; //solidity version
+pragma solidity <0.6.0; //solidity version
 
 contract Counter {
     //unsigned integer
