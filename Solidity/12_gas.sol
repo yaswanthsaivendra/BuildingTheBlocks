@@ -51,4 +51,4 @@ MiniMe mini = MiniMe(10, 20, 30);
 
 
 // Whenever possible avoid using storage.
-//In solidity using storage is lot more costly then running for loops multiple times.
+//In solidity using storage is lot more costly than running for loops multiple times.
