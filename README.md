@@ -3,6 +3,9 @@ Blockchain development - Ethereum
 
 # Roadmap
 
+(Dealing with date/time in solidity)[https://soliditytips.com/articles/solidity-dates-time-operations/]
+Note : `now` is deprecated in 0.7.0. Now we should use `block.timestamp` only.
+
 # Concepts
 1. Intro (pragma, basic structure of contract, statically typed language, constructor function)
 2. Variables(uint, strings, address)
