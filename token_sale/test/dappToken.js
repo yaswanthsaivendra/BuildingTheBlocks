@@ -41,4 +41,53 @@ contract("DappToken", (accounts) => {
         assert.equal(returnValue, true, "return value should be true")
     });
 
+
+    it("approves tokens for delegated transfer", async () => {
+        const returnValue = await dappToken.approve.call(accounts[1], 100);
+        const result = await dappToken.approve(accounts[1], 100, { from: accounts[0]});
+        assert.equal(returnValue, true, "return value should be true");
+        assert.equal(result.receipt.logs.length, 1 , "should trigger 1 event");
+        assert.equal(result.receipt.logs[0].event, "Approval", "event should be Approval");
+        assert.equal(result.receipt.logs[0].args._owner, accounts[0], "logs the _owner account");
+        assert.equal(result.receipt.logs[0].args._spender, accounts[1], "logs the _spender account");
+        assert.equal(result.receipt.logs[0].args._value, 100, "logs the _value - tokens to be transfered");
+        const allowance = await dappToken.allowance(accounts[0], accounts[1]);
+        assert.equal(allowance.toNumber(), 100, "stores the allowance for delegated transfer");
+    });
+
+    it("handles delegated transfers", async () => {
+        fromAccount = accounts[2];
+        toAccount = accounts[3];
+        spendingAccount = accounts[4];
+        //transfer some tokens to fromAccount from account[0]
+        const transfer = await dappToken.transfer(fromAccount, 100, { from : accounts[0]});
+        const approve = await dappToken.approve(spendingAccount, 10, { from: fromAccount});
+        //try transfering more amount than the senders balance
+        try {
+            await dappToken.transferFrom(fromAccount, toAccount, 1000, { from : spendingAccount });
+        } catch (error) {
+            assert.equal(error.message.includes('revert'), true, "cannot transfer tokens more than fromAccount balance")
+        }
+        //try transfering more amount than the allowance amount
+        try {
+            await dappToken.transferFrom(fromAccount, toAccount, 20, { from : spendingAccount });
+        } catch (error) {
+            assert.equal(error.message.includes('revert'), true, "cannot transfer tokens more than allowance amount")
+        }
+        const returnValue = await dappToken.transferFrom.call(fromAccount, toAccount, 10, { from : spendingAccount });
+        assert.equal(returnValue, true, "returnValue should be true");
+        const transferFrom = await dappToken.transferFrom(fromAccount, toAccount, 10, { from : spendingAccount });
+        assert.equal(transferFrom.receipt.logs.length, 1 , "should trigger 1 event");
+        assert.equal(transferFrom.receipt.logs[0].event, "Transfer", "event should be Transfer");
+        assert.equal(transferFrom.receipt.logs[0].args._from, fromAccount, "logs the _owner account");
+        assert.equal(transferFrom.receipt.logs[0].args._to, toAccount, "logs the _spender account");
+        assert.equal(transferFrom.receipt.logs[0].args._value, 10, "logs the _value - tokens to be transfered");
+        const balanceOfFromAccount = (await dappToken.balanceOf(fromAccount)).toNumber();
+        const balanceOfToAccount = (await dappToken.balanceOf(toAccount)).toNumber();
+        assert.equal(balanceOfFromAccount, 90, "deducts the amount from the sending account");
+        assert.equal(balanceOfToAccount, 10, "adds the amount from the receiving account");
+        const remainingAllowance = (await dappToken.allowance(fromAccount, spendingAccount)).toNumber();
+        assert.equal(remainingAllowance, 0, "deducts the amount from allowance and updates it")
+    })
+
 })
