@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.0;
+pragma solidity <0.6.0;
 
 contract MyContract {
     uint[] public numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

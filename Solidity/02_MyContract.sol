@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 // pragma - command means additional information will be taken care by compiler.
-pragma solidity ^0.6.0; // ^ does mean that use this version or a higher one.
+pragma solidity ^0.5.0; // use a version which is >=0.5.0 and <0.6.0
 
 // solidity is a statically typed language (i.e, data types should be defined explicitly).
 
