@@ -11,11 +11,14 @@ Blockchain development - Ethereum
     - basic structure of contract
     - statically typed language
     - constructor function
-2. Variables : Value types - uint, int, bool, strings, address
+2. Value types : uint, int, bool, strings address
     - uint,int : uint[1-256], uint is an alias of uint256
     - address : address, address payable 
-        -   address payable : send , transfer
-3. functions, function modifiers ,Enum types, struct types, enum types, arrays(fixed/variable length, 1D/2D), mappings(nested)
+        - address payable : send, transfer
+3. Contract types : contracts
+4. Reference types :
+
+3. functions, function modifiers ,Enum types, struct types, arrays(fixed/variable length, 1D/2D), mappings(nested)
 4. state variables vs local variables
 5. Math operations
 6. visibility of functions(public/private and internal/external)
