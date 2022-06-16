@@ -34,14 +34,14 @@ Blockchain development - Ethereum
 16. Interfaces and Libraries
 
 # Note 
-(Dealing with date/time in solidity)[https://soliditytips.com/articles/solidity-dates-time-operations/]
+[Dealing with date/time in solidity](https://soliditytips.com/articles/solidity-dates-time-operations/)
 Note : `now` is deprecated in 0.7.0. Now we should use `block.timestamp` only.
 
 # Bug Bounties in smart contracts
 
-practice finding vulnerabilities in smart contracts : (damnvulnerabledefi)[https://www.damnvulnerabledefi.xyz/]
+practice finding vulnerabilities in smart contracts : [damnvulnerabledefi](https://www.damnvulnerabledefi.xyz/)
 
 <h3>Bounty Platforms </h3>
-(code4rena)[https://code4rena.com/]
-(immunefi.com)[https://immunefi.com/]
+[code4rena](https://code4rena.com/)
+[immunefi](https://immunefi.com/)
 
